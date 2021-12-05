@@ -10,5 +10,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2.4.0
+        ref: final-stable
+
+      - name: Checkout external repository
+        uses: actions/checkout@v2.4.0
         with:
           repository: Luckenborg/doc_content_base
+          path: '.external/openHABian'
+
+      - name: Copy current docs contents
+        run: |
+          ls -ls ./installation
+          rm -rf 'installation/openhabian*.md'
+          ls -ls ./installation
