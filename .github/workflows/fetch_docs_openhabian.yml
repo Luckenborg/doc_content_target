@@ -17,25 +17,30 @@ jobs:
         uses: actions/checkout@v2.4.0
         with:
           repository: Luckenborg/doc_content_base
-          path: '.external/openHABian'
+          ref: main
+          path: './.external/openHABian'
 
-      - name: Copy current docs contents
+      - name: Check workspace contents
+        run: ls -ls
+
+      - name: Remove existing doc contents
         run: |
-          echo "Check complete folder"
-          echo "---"
-          find ./installation/
-          echo "---"
-          echo "Check contents"
-          echo "---"
-          find ./installation/ -iname "openhabian*" -type f
-          echo "---"
-          echo "Wildcard removal."
-          echo "---"
+          echo "Remove existing openHABian doc files."
           find ./installation/ -iname "openhabian*" -type f -delete
           echo "---"
-          echo "Check contents"
+          echo "Check for remaining contents"
+          echo "find ./installation/ -iname "openhabian*" -type f"
           find ./installation/ -iname "openhabian*" -type f
           echo "---"
-          echo "Check complete folder"
-          echo "---"
-          find ./installation/
+
+      -name: Copy newest doc contents
+        run: |
+          echo "Copy current doc folder contents"
+          cp -v ./.external/openHABian/docs/openhabian*.md ./installation
+          cp -v ./.external/openHABian/docs/images/openHABian*.md ./installation/images
+      
+      -name: Remove external repositories
+        run: rm -rf ./.external
+
+      - name: Check workspace contents
+        run: ls -ls
