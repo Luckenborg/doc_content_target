@@ -69,7 +69,7 @@ jobs:
           author: openHAB Bot <info@openhab.org>
           branch: automated/fetch_openhabian_docs
           delete-branch: true
-          title: [Automated] Fetch openHABian docs
+          title: "[Automated] Fetch openHABian docs"
           labels: |
             automated_pr
       - name: Check outputs
