@@ -33,7 +33,7 @@ jobs:
           find ./installation/ -iname "openhabian*" -type f
           echo "---"
 
-      -name: Copy newest doc contents
+      - name: Copy newest doc contents
         run: |
           echo "Copy current doc folder contents"
           cp -v ./.external/openHABian/docs/openhabian*.md ./installation
