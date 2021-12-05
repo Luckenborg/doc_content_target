@@ -22,5 +22,5 @@ jobs:
       - name: Copy current docs contents
         run: |
           ls -ls ./installation
-          rm -rf 'installation/openhabian*.md'
+          rm -rf ./installation/openhabian*.md
           ls -ls ./installation
