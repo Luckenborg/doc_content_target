@@ -10,7 +10,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2.4.0
-        ref: final-stable
+        with:
+          ref: final-stable
 
       - name: Checkout external repository
         uses: actions/checkout@v2.4.0
