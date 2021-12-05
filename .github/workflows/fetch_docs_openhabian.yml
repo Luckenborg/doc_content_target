@@ -39,7 +39,7 @@ jobs:
         run: |
           echo "Copy current doc folder contents"
           cp -v ./external_contents/openHABian/docs/openhabian*.md ./installation
-          cp -v ./external_contents/openHABian/docs/images/openHABian*.md ./installation/images
+          cp -v ./external_contents/openHABian/docs/images/openHABian* ./installation/images
 
       - name: Check workspace contents
         run: |
@@ -53,6 +53,6 @@ jobs:
           echo "---"
           cat ./installation/openhabian.md
           echo "---"
-          
+
       - name: Check workspace contents
         run: ls -ls
