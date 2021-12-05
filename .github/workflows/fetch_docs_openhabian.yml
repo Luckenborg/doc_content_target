@@ -54,5 +54,25 @@ jobs:
           cat ./installation/openhabian.md
           echo "---"
 
+      - name: Remove external repositories
+        run: rm -rf ./external
+
       - name: Check workspace contents
         run: ls -ls
+      
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Automated openHABian Docs fetch
+          commiter: openHAB Bot <info@openhab.org>
+          author: openHAB Bot <info@openhab.org>
+          branch: automated/fetch_openhabian_docs
+          delete-branch: true
+          title: [Automated] Fetch openHABian docs
+          labels: |
+            automated_pr
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
