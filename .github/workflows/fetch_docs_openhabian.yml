@@ -21,6 +21,21 @@ jobs:
 
       - name: Copy current docs contents
         run: |
+          echo "Check installation folder"
+          echo "\n\n"
           ls -ls ./installation
-          rm -rf ./installation/openhabian*.md
+          echo "\n\n"
+          echo "Check images folder folder\n\n"
+          echo "\n\n"
+          ls -ls ./installation/images
+          echo "\n\n"
+          echo "Wildcard removal."
+          echo "\n\n"
+          rm -rf ./installation/*openhabian*.md
+          echo "Check installation folder"
+          echo "\n\n"
           ls -ls ./installation
+          echo "\n\n"
+          echo "Check images folder folder\n\n"
+          echo "\n\n"
+          ls -ls ./installation/images
