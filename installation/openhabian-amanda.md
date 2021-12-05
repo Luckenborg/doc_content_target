@@ -1,1 +1,3 @@
 # openHABian amanda
+
+## Changed
