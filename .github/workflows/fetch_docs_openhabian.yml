@@ -3,8 +3,7 @@ name: Fetch openHABian Docs
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: |
-      update-openhabian-docs-event
+    types: [update-openhabian-docs-event]
 
 jobs:
   fetchDocs:
