@@ -17,8 +17,7 @@ jobs:
         uses: actions/checkout@v2.4.0
         with:
           repository: Luckenborg/doc_content_base
-          ref: main
-          path: './.external/openHABian'
+          path: './external/openHABian'
 
       - name: Check workspace contents
         run: ls -ls
@@ -32,15 +31,6 @@ jobs:
           echo "find ./installation/ -iname "openhabian*" -type f"
           find ./installation/ -iname "openhabian*" -type f
           echo "---"
-
-      - name: Copy newest doc contents
-        run: |
-          echo "Copy current doc folder contents"
-          cp -v ./.external/openHABian/docs/openhabian*.md ./installation
-          cp -v ./.external/openHABian/docs/images/openHABian*.md ./installation/images
-      
-      - name: Remove external repositories
-        run: rm -rf ./.external
 
       - name: Check workspace contents
         run: ls -ls
