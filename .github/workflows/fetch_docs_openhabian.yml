@@ -21,22 +21,21 @@ jobs:
 
       - name: Copy current docs contents
         run: |
-          shopt -s nocaseglob
-          echo "Check installation folder"
+          echo "Check complete folder"
           echo "---"
-          ls -ls ./installation
+          find ./installation/
           echo "---"
-          echo "Check images folder folder---"
+          echo "Check contents"
           echo "---"
-          ls -ls ./installation/images
+          find ./installation/ -iname "openhabian*" -type f
           echo "---"
           echo "Wildcard removal."
           echo "---"
-          rm -rf ./installation/*openhabian*.md
-          echo "Check installation folder"
+          find ./installation/ -iname "openhabian*" -type f -delete
           echo "---"
-          ls -ls ./installation
+          echo "Check contents"
+          find ./installation/ -iname "openhabian*" -type f
           echo "---"
-          echo "Check images folder folder"
+          echo "Check complete folder"
           echo "---"
-          ls -ls ./installation/images
+          find ./installation/
