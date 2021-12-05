@@ -1,0 +1,14 @@
+name: Fetch openHABian Docs
+
+on:
+  workflow_dispatch
+
+jobs:
+  fetchDocs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
+        with:
+          repository: Luckenborg/doc_content_base
