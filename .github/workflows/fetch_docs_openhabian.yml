@@ -55,7 +55,7 @@ jobs:
           echo "---"
 
       - name: Remove external repositories
-        run: rm -rf ./external
+        run: rm -rf ./external_contents
 
       - name: Check workspace contents
         run: ls -ls
@@ -65,7 +65,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Automated openHABian Docs fetch
-          commiter: openHAB Bot <info@openhab.org>
+          committer: openHAB Bot <info@openhab.org>
           author: openHAB Bot <info@openhab.org>
           branch: automated/fetch_openhabian_docs
           delete-branch: true
