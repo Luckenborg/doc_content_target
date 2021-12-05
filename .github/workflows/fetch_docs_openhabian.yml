@@ -39,7 +39,7 @@ jobs:
           cp -v ./.external/openHABian/docs/openhabian*.md ./installation
           cp -v ./.external/openHABian/docs/images/openHABian*.md ./installation/images
       
-      -name: Remove external repositories
+      - name: Remove external repositories
         run: rm -rf ./.external
 
       - name: Check workspace contents
