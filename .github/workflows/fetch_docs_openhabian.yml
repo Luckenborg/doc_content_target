@@ -21,19 +21,6 @@ jobs:
           repository: Luckenborg/doc_content_base
           path: './external_contents/openHABian'
 
-      - name: Check workspace contents
-        run: |
-          echo "List files and folders"
-          echo "---"
-          ls -ls
-          echo "Find related files in the installation folder recursively"
-          echo "---"
-          find ./installation/
-          echo "Print example doc."
-          echo "---"
-          cat ./installation/openhabian.md
-          echo "---"
-
       - name: Remove existing doc contents
         run: find ./installation/ -iname "openhabian*" -type f -delete
 
@@ -43,24 +30,8 @@ jobs:
           cp -v ./external_contents/openHABian/docs/openhabian*.md ./installation
           cp -v ./external_contents/openHABian/docs/images/openHABian* ./installation/images
 
-      - name: Check workspace contents
-        run: |
-          echo "List files and folders"
-          echo "---"
-          ls -ls
-          echo "Find related files in the installation folder recursively"
-          echo "---"
-          find ./installation/
-          echo "Print example doc."
-          echo "---"
-          cat ./installation/openhabian.md
-          echo "---"
-
       - name: Remove external repositories
         run: rm -rf ./external_contents
-
-      - name: Check workspace contents
-        run: ls -ls
       
       - name: Create Pull Request
         id: cpr
@@ -74,6 +45,7 @@ jobs:
           title: "[Automated] Fetch openHABian docs"
           labels: |
             automated_pr
+
       - name: Check outputs
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
