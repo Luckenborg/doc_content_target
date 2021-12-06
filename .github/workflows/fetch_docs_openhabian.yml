@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-reusable-fetch-workflow:
-    uses: ${{github.repository}}/.github/workflows/reusable-fetch.yml@main
+    uses: Luckenborg/doc_content_target/.github/workflows/reusable-fetch.yml@main
     with:
       base_source_organization: Luckenborg
       base_source_repository: doc_content_base
