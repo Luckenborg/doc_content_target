@@ -6,47 +6,12 @@ on:
     types: [update-openhabian-docs-event]
 
 jobs:
-  fetchDocs:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2.4.0
-        with:
-          ref: final-stable
-
-      - name: Checkout external repository
-        uses: actions/checkout@v2.4.0
-        with:
-          repository: Luckenborg/doc_content_base
-          path: './external_contents/openHABian'
-
-      - name: Remove existing doc contents
-        run: find ./installation/ -iname "openhabian*" -type f -delete
-
-      - name: Copy newest doc contents
-        run: |
-          echo "Copy current doc folder contents"
-          cp -v ./external_contents/openHABian/docs/openhabian*.md ./installation
-          cp -v ./external_contents/openHABian/docs/images/openHABian* ./installation/images
-
-      - name: Remove external repositories
-        run: rm -rf ./external_contents
-      
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: Automated openHABian Docs fetch
-          committer: openHAB Bot <info@openhab.org>
-          author: openHAB Bot <info@openhab.org>
-          branch: automated/fetch_openhabian_docs
-          delete-branch: true
-          title: "[Automated] Fetch openHABian docs"
-          labels: |
-            automated_pr
-
-      - name: Check outputs
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+  call-reusable-fetch-workflow:
+    uses: ${{github.repository}}/.github/workflows/reusable-fetch.yml@main
+    with:
+      base_source_organization: Luckenborg
+      base_source_repository: doc_content_base
+      base_folder: installation
+      doc_base_name: openhabian
+      has_images: true
+      image_base_name: openHABian
