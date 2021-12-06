@@ -13,7 +13,7 @@ on:
         type: string
       base_source_organization:
         description: 'The organization or user, that is holding the base repository. Defaults to `openhab`.'
-        deafult: 'openhab'
+        default: 'openhab'
         required: false
         type: string
       base_source_repository:
@@ -36,7 +36,7 @@ on:
       has_images:
         description: 'Flag for enabling image copy commands.'
         required: true
-        type: bool
+        type: boolean
       image_base_name:
         description: 'The image name prefix for lookup options'
         required: true
