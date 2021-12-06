@@ -8,7 +8,7 @@ on:
     inputs:
       base_target_branch:
         description: 'The branch to check out in the target repository. Defaults to `final-stable`.'
-        default: 'john-doe'
+        default: 'final-stable'
         required: false
         type: string
       base_source_organization:
